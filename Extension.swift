@@ -83,7 +83,13 @@ extension UITextField{
 }
 
 extension UITextView{
-    
+    /**
+     
+     UITextView placeHolder 입력
+     @param image name :String
+     @returns <#retval#>
+     @exception <#throws#>
+     */
     func setPlaceholder(_ placeString : String) {
         
         let placeholderLabel = UILabel()
@@ -98,6 +104,13 @@ extension UITextView{
         self.addSubview(placeholderLabel)
     }
     
+    /**
+     
+     UITextView placeHolder 숨김처리
+     @param <#parameter#>
+     @returns <#retval#>
+     @exception <#throws#>
+     */
     func checkPlaceholder() {
         let placeholderLabel = self.viewWithTag(999) as! UILabel
         placeholderLabel.isHidden = !self.text.isEmpty
@@ -155,11 +168,25 @@ extension UIView {
 }
 
 extension UITableView {
+    /**
+     
+     테이블뷰에서 맨밑으로
+     @param Animation Bool
+     @returns <#retval#>
+     @exception <#throws#>
+     */
     func scrollToBottom(animated: Bool) {
         let y = contentSize.height - frame.size.height
         setContentOffset(CGPoint(x: 0, y: (y<0) ? 0 : y), animated: animated)
     }
     
+    /**
+     
+     테이블뷰에서 맨위로
+     @param Animation Bool
+     @returns <#retval#>
+     @exception <#throws#>
+     */
     func scrollToTop(animated: Bool){
         let fristIndex = IndexPath(row: 0, section: 0)
         scrollToRow(at: fristIndex, at: .top, animated: animated)
@@ -168,6 +195,12 @@ extension UITableView {
 
 extension CALayer {
     
+    /**
+     Layer 에 Border 추가
+     @param UIRectEdge, UIColor, CGFloat
+     @returns <#retval#>
+     @exception <#throws#>
+     */
     func addBorder(edge: UIRectEdge, color: UIColor, thickness: CGFloat) {
         
         let border = CALayer()
@@ -224,6 +257,12 @@ extension CALayer {
 
 
 extension UIImageView {
+    /**
+    Http Image Download
+     @param URL, UIViewContentModeloat
+     @returns <#retval#>
+     @exception <#throws#>
+     */
     func downloadedFrom(url: URL, contentMode mode: UIViewContentMode = .scaleAspectFit) {
         contentMode = mode
         URLSession.shared.dataTask(with: url) { (data, response, error) in
@@ -251,6 +290,12 @@ extension UIImageView {
 
 
 extension UILabel {
+    /**
+    Html code 를 UILabel 로 처리
+     @param String
+     @returns <#retval#>
+     @exception <#throws#>
+     */
     func setHTMLFromString(htmlText: String) {
         let modifiedFont = NSString(format:"<span style=\"font-family: '-apple-system', 'HelveticaNeue'; font-size: \(self.font!.pointSize)\">%@</span>" as NSString, htmlText) as String
         
@@ -268,6 +313,12 @@ extension UILabel {
 
 extension String{
     
+    /**
+    String 에서 Html 코드 삭제
+     @param String
+     @returns String
+     @exception <#throws#>
+     */
     func removeHtmlFromString(inPutString: String) -> String{
         
         var returnString = inPutString.replacingOccurrences(of: "<br>", with: "\n")
@@ -282,6 +333,12 @@ extension String{
         return returnString
     }
     
+    /**
+    String 에서 Html 코드 변환
+     @param String
+     @returns String
+     @exception <#throws#>
+     */
     func changeHtmlFromString(inPutString: String) -> String{
         
         var returnString = inPutString.replacingOccurrences(of: "&nbsp;", with: " ")
@@ -292,6 +349,12 @@ extension String{
         return returnString
     }
     
+    /**
+    String 문자열 자르기
+     @param 시작 끝 포인트
+     @returns String
+     @exception <#throws#>
+     */
     func substring(from: Int?, to: Int?) -> String {
         if let start = from {
             guard start < self.count else {
@@ -368,6 +431,12 @@ extension String{
 }
 
 extension UINavigationController {
+    /**
+    UINavigationController
+     @param 뷰컨트롤 순서 변경
+     @returns <#retval#>
+     @exception <#throws#>
+     */
     func replaceTopViewController(with viewController: UIViewController, animated: Bool) {
         var vcs = viewControllers
         vcs[vcs.count - 1] = viewController
