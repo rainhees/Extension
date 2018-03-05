@@ -428,6 +428,16 @@ extension String{
         
         return self.substring(from: start, to: to)
     }
+    
+    /**
+     문자열 공백 제거 후 글자수 체크
+     @param 뷰컨트롤 순서 변경
+     @returns 글자여부 bool
+     @exception <#throws#>
+     */
+    func boolStringLength() -> Bool {
+        return self.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).count > 0 ? true : false
+    }
 }
 
 extension UINavigationController {
