@@ -111,9 +111,9 @@ public func agoDateString(_ ago:Int, _ dateFormat:String = "yyyy.MM.dd")->String
  */
 public func agoHourString(_ ago:Int, _ dateFormat:String = "yyyy.MM.dd HH:mm")->String{
     
-   
+    
     let date = NSDate(timeIntervalSinceNow:TimeInterval(-60 * 60 * ago))
-
+    
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = dateFormat
     let dateString = dateFormatter.string(from:date as Date)
